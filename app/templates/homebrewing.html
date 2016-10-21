@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% set active_page = request.path|replace("/","") %}
+{% block content %}
+
+<div id="content">
+<div class="bd-pageheader text-xs-center text-sm-left">
+  <div class="container">
+    <h1>Beer labels</h1>
+    <p class="lead">
+      Here is a few of my brewed beer labels.
+    </p>
+
+  </div>
+</div>
+<hr class="featurette-divider">
+</div>
+<div class="container marketing">
+
+
+
+    <div class="row vertical-align">
+    {% for name in labels %}
+        <div class="col-lg-4">
+            <a href="../static/images/homebrewing/{{ name }}" data-title="{{ name.replace('.jpg','') }}" data-lightbox="Beer_labels">
+                <img class="img" src="../static/images/homebrewing/{{ name }}" alt="{{ name }}" style="max-width: 300px; max-height: 140px"></a>
+                <h2>{{ name.replace('.jpg','') }}</h2>
+        </div>
+    {% if (loop.index) % 3 == 0 %} </div><div class="row vertical-align"> {% endif %}
+          {% endfor %}
+    </div>
+</div>
+{% endblock %}

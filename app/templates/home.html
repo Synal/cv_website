@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div id="content">
+<div class="bd-pageheader text-xs-center text-sm-left">
+  <div class="container">
+    <h1>Welcome</h1>
+  </div>
+</div>
+<hr class="featurette-divider">
+</div>
+<div class="container marketing">
+    <div class="row featurette">
+        <h2 class="featurette-heading">This website is hosted on <span class="text-muted">RaspberryPi.</span></h2>
+        <p class="lead"><strong>Technologies used:</strong> </p><br>
+    </div>
+    <div class="row vertical-align">
+    {% for name, url, logo in technologies %}
+        <div class="col-lg-4">
+            <a href="{{ url }}">
+                <img class="img" src="../static/images/home/{{ logo }}" alt="{{ name }}" style="max-width: 300px; max-height: 140px">
+                <h2>{{ name }}</h2></a>
+        </div>
+    {% if (loop.index) % 3 == 0 %} </div><div class="row vertical-align"> {% endif %}
+          {% endfor %}
+    </div>
+</div>
+{% endblock %}
